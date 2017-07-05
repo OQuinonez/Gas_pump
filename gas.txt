@@ -1,0 +1,3 @@
+Regular, 0, 2.07
+Medium, 0, 2.30
+Premium, 0, 2.35
