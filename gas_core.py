@@ -13,19 +13,38 @@ def price_of_gas(type_gas):
     2.35
     """
     if type_gas.lower() == "regular":
-        return 2.07
         print("You picked Regular which is $ 2.07")
+        return 2.07
     elif type_gas.lower() == "medium":
-        return 2.30
         print("You picked Medium which is $ 2.30")
+        return 2.30
     elif type_gas.lower() == "premium":
-        return 2.35
         print("You picked Premium which is $ 2.35")
+        return 2.35
     else:
         return None
 
 
 
+def just_price(type_gas, gallons):
+    '''
+    Gets the price of each gas type.
+
+    >>> just_price('regular', 18)
+    37.26
+    >>> just_price('medium', 13)
+    29.9
+    >>> just_price('premium', 14)
+    32.9
+    '''
+    if type_gas.lower() == "regular":
+        return 2.07 * gallons
+    elif type_gas.lower() == "medium":
+        return 2.30 * gallons
+    elif type_gas.lower() == "premium":
+        return 2.35 * gallons
+    else:
+        return None
 
 def calc_gallon(money, price_gas):
     """ (float, float) _> float
@@ -56,10 +75,14 @@ def calc_money(gallons, price_gas):
     return answer
 
 
+# def get_file(type_gas, gallons, money):
+#     r = "Regular"
+#     m = "Medium"
+#     p = "Premium"
+
+#     price = 
+
 
 def main():
-
-
-
     if __name__ == '__main__':
         main()
