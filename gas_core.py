@@ -73,7 +73,7 @@ def calc_money(gallons, price_gas):
 def update_inventory(type_gas, gallons, price):
     ''' str, float, float _> None
     '''
-    msg = type_gas + ', ' + '{:0.2f}' + ', ' + '{:0.2f} '.format(gallons, price)
+    msg = type_gas + ', ' + str(gallons) + ', ' + str(price) + '\n'
     with open('gas.txt', 'a') as file:
         file.write(msg)
     return None
@@ -82,6 +82,11 @@ def final_message(name, price, gallons):
     """ str, float, float -> str """
     return 'You bought {:0.2f} gallons of {} gas for ${:0.2f}.'.format(gallons, name, price)
 def other_message(name, price, gallons):
+
     # For paying after
     """ str, float, float -> str """
     return 'Your total is ${:0.2f} of {} gas for {} gallons.'.format(gallons, name, price)
+
+
+
+def refuel_tank()
