@@ -1,26 +1,22 @@
 import time
-from gas_core import price_of_gas as price
 from gas_core import calc_money as dinero
 from gas_core import calc_gallon as gal
-# from gas_core import diff_gas as gas
+from gas_core import load_inventory, price_of, final_message
+from gas_core import other_message, update_inventory
+
 
 def main():
-
-    print("Hello, welcome to O's station.\n")
-    print("Here is the type of gas we have today.\n")
-    with open('prices.txt', 'r') as file:
-        list_gas = file.read()
-        print(list_gas)
+    print("Hello, welcome to O's station.\n\nHere is the type of gas we have today.\n")
+    inventory = load_inventory()
+    print(inventory)
     type_gas = input("What type of gas would you like? \n\n")
-    price_gas = price(type_gas)
-    # diff_price = gas(type_gas)
+    gas_price = price_of(inventory, type_gas)
+    if not gas_price:
+        print('That gas does not exist')
+        exit()
 
-
-        
     print("We have two different ways you can pay.\n")
-    print("Prepay\n")
-    print("or\n")
-    print("After filling up")
+    print("Prepay\n\nor\n\nAfter filling up")
     pay_type = input("How would you like to pay? \n")
     if pay_type.lower() == "prepay":
         print("Thanks for choosing Prepay.")
@@ -28,14 +24,14 @@ def main():
         print("Press Enter to start filling")
         input()
         time.sleep(.5)
-        print("You have bought", gal(money, price_gas), "gallons." )
+        print(final_message(type_gas, float(money), float(money) / float(gas_price)))
     else:
         print("Thanks for choosing after filling up.\n")
         gallons = input("How many gallons would you want? \n")
         print("Press Enter to start filling")
         input()
         time.sleep(.5)
-        print("Your total will be $", dinero(float(gallons), float(price_gas)))
+        print(other_message(type_gas, float(gallons), float(gallons) * float(gas_price)))
     
 if __name__ == '__main__':
     main()
