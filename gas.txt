@@ -1,0 +1,7 @@
+gas_type, gallons, price
+regular, 456, 943.92
+medium, 19.565217391304348, 45
+premium, 19.148936170212764, 45
+premium, 34, 79.9
+premium, 19.148936170212764, 45
+premium, 19.148936170212764, 45
