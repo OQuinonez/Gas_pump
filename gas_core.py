@@ -1,30 +1,25 @@
-def price_of_gas(type_gas):
-    """(str) -> float
-    This function will print a message to the user
-    and return the float value of the price per gallon
-    >>> price_of_gas('Regular')
-    You picked Regular which is $ 2.07
-    2.07
-    >>> price_of_gas('medium')
-    You picked Medium which is $ 2.30
-    2.3
-    >>> price_of_gas('Premium')
-    You picked Premium which is $ 2.35
-    2.35
+def load_inventory():
+    """ -> list[list]
+    returns inventory
     """
-    if type_gas.lower() == "regular":
-        print("You picked Regular which is $ 2.07")
-        return 2.07
-    elif type_gas.lower() == "medium":
-        print("You picked Medium which is $ 2.30")
-        return 2.30
-    elif type_gas.lower() == "premium":
-        print("You picked Premium which is $ 2.35")
-        return 2.35
-    else:
-        return None
+    with open("prices.txt", 'r') as file:
+        file.readline()
+        items = file.readlines()
+    inventory = []
+    for element in items:
+        pieces = element.split(', ')
+        inventory.append([pieces[0], float(pieces[1].strip()), float(pieces[2].strip())])
+    return inventory
 
-
+def price_of(inventory, gas_name):
+    ''' ([[str, float, float]], str) _> (float)
+    This function will get a string and 
+    it will look in a txt file and pull out 
+    the price of that gas and return it
+    ''' 
+    for item in inventory:
+        if gas_name.strip() == item[0].strip().lower():
+            return float(item[1])
 
 def just_price(type_gas, gallons):
     '''
@@ -75,14 +70,18 @@ def calc_money(gallons, price_gas):
     return answer
 
 
-# def get_file(type_gas, gallons, money):
-#     r = "Regular"
-#     m = "Medium"
-#     p = "Premium"
-
-#     price = 
-
-
-def main():
-    if __name__ == '__main__':
-        main()
+def update_inventory(type_gas, gallons, price):
+    ''' str, float, float _> None
+    '''
+    msg = type_gas + ', ' + '{:0.2f}' + ', ' + '{:0.2f} '.format(gallons, price)
+    with open('gas.txt', 'a') as file:
+        file.write(msg)
+    return None
+def final_message(name, price, gallons):
+    # for prepay
+    """ str, float, float -> str """
+    return 'You bought {:0.2f} gallons of {} gas for ${:0.2f}.'.format(gallons, name, price)
+def other_message(name, price, gallons):
+    # For paying after
+    """ str, float, float -> str """
+    return 'Your total is ${:0.2f} of {} gas for {} gallons.'.format(gallons, name, price)
