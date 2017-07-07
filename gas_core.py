@@ -89,4 +89,19 @@ def other_message(name, price, gallons):
 
 
 
-def refuel_tank()
+def subtracting_tank(inventory, gallons):
+    """ [[str, float, float]] -> list[list]
+    return inventory with the differnce after 
+    the gallons bought
+    """
+    updated_inventory = []
+    for i in inventory:
+        i[0] = str(i[0])
+        i[1] = str(i[1])
+        i[2] = float(i[2])
+        diff = i[2] - gallons
+        n = 5000 - diff
+        if diff <= n:
+            diff+= n
+        update_inventory.append(i[0], i[1], i[2])
+    return updated_inventory
