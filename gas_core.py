@@ -20,27 +20,6 @@ def price_of(inventory, gas_name):
     for item in inventory:
         if gas_name.strip() == item[0].strip().lower():
             return float(item[1])
-
-def just_price(type_gas, gallons):
-    '''
-    Gets the price of each gas type.
-
-    >>> just_price('regular', 18)
-    37.26
-    >>> just_price('medium', 13)
-    29.9
-    >>> just_price('premium', 14)
-    32.9
-    '''
-    if type_gas.lower() == "regular":
-        return 2.07 * gallons
-    elif type_gas.lower() == "medium":
-        return 2.30 * gallons
-    elif type_gas.lower() == "premium":
-        return 2.35 * gallons
-    else:
-        return None
-
 def calc_gallon(money, price_gas):
     """ (float, float) _> float
     This funciton will get the amount of money
@@ -86,22 +65,22 @@ def other_message(name, price, gallons):
     # For paying after
     """ str, float, float -> str """
     return 'Your total is ${:0.2f} of {} gas for {} gallons.'.format(gallons, name, price)
-
-
-
-def subtracting_tank(inventory, gallons):
-    """ [[str, float, float]] -> list[list]
+def subtracting_tank(inventory, type_gas, gallons):
+    """ [[str, float, float]], gallons -> list[list]
     return inventory with the differnce after 
     the gallons bought
     """
+    with open("prices.txt", 'r') as file:
+        file.readline()
+        items = file.readlines()
     updated_inventory = []
     for i in inventory:
         i[0] = str(i[0])
         i[1] = str(i[1])
         i[2] = float(i[2])
-        diff = i[2] - gallons
-        n = 5000 - diff
-        if diff <= n:
-            diff+= n
-        update_inventory.append(i[0], i[1], i[2])
+        if type_gas == i[0].lower():
+            diff = i[2] - float(gallons)
+        else:
+            diff = i[2]
+        updated_inventory.append([i[0], i[1], diff])
     return updated_inventory
