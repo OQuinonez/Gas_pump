@@ -1,4 +1,0 @@
-name, price, gallons
-Regular, 2.07, 5000
-Medium, 2.30, 5000
-Premium, 2.35, 5000
