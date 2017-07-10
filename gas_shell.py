@@ -4,12 +4,11 @@ from gas_core import calc_gallon as gal
 from gas_core import load_inventory, price_of, final_message
 from gas_core import other_message, update_inventory, subtracting_tank
 
-
 def main():
     print("Hello, welcome to O's station.\n\nHere is the type of gas we have today.\n")
     inventory = load_inventory()
     print(inventory)
-    type_gas = input("What type of gas would you like? \n\n")
+    type_gas = input("What type of gas would you like? \n\n").lower().strip()
     while type_gas.lower() != 'q':
         print("\nIf you wish to exit press 'Q'\n")
         gas_price = price_of(inventory, type_gas)
@@ -26,7 +25,7 @@ def main():
             gallons =  float(money) / float(gas_price)
             print("Press Enter to start filling")
             input()
-            time.sleep(.5)
+            time.sleep(1.5)
             print(final_message(type_gas, float(money), float(money) / float(gas_price)))
         elif pay_type.lower() == 'q':
             exit()
@@ -36,9 +35,11 @@ def main():
             money = float(gallons) * float(gas_price)
             print("Press Enter to start filling")
             input()
-            time.sleep(.5)
+            time.sleep(1.5)
             print(other_message(type_gas, float(gallons), float(gallons) * float(gas_price)))
         update_inventory(type_gas, gallons, money)
+        inventory = subtracting_tank(inventory, type_gas, gallons)
+        print(inventory)
 
     
 if __name__ == '__main__':
