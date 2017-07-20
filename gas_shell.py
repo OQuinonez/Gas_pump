@@ -4,7 +4,7 @@ from gas_core import calc_gallon as gal
 from gas_core import load_inventory, price_of, final_message
 from gas_core import other_message, update_inventory, subtracting_tank
 
-def main():
+def gas_function():
     print("Hello, welcome to O's station.\n\nHere is the type of gas we have today.\n")
     inventory = load_inventory()
     print(inventory)
@@ -38,9 +38,12 @@ def main():
             time.sleep(1.5)
             print(other_message(type_gas, float(gallons), float(gallons) * float(gas_price)))
         update_inventory(type_gas, gallons, money)
-        inventory = subtracting_tank(inventory, type_gas, gallons)
+        new_inventory = subtracting_tank(inventory, type_gas, gallons)
         print(inventory)
 
-    
+
+
+def main():
+    gas_function()
 if __name__ == '__main__':
     main()
