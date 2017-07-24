@@ -13,8 +13,6 @@ def test_final_message():
     expected = 'You bought 12.00 gallons of regular gas for $2.05.'
     assert actual == expected
 
-# def test_other_message():
-
-#     # For paying after
-#     """ str, float, float -> str """
-#     return 'Your total is ${:0.2f} of {} gas for {} gallons.'.format(gallons, name, price)
+def test_other_message():
+    actual = gas_core.final_message('regular', 2.05, 10)
+    return 'Your total is ${:0.2f} of {} gas for {} gallons.'.format(gallons, name, price)
