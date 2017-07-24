@@ -29,3 +29,17 @@ def subtracting_tank(inventory, type_gas, gallons):
     with open('prices.txt', 'a') as f:
         updated_inventory.append([i[0], i[1], diff])
     return updated_inventory
+
+def manager_inventory():
+    ''' _> dict{dict{}}
+    Fuction will load the prices as a dictionaries of 
+    dictionaries.
+    '''
+    inventory = {}
+    with open('prices.txt', 'r') as file:
+        _, key_1, key_2, key_3 = file.readline().strip().split(', ')
+        lines = file.readlines()
+        for line in lines:
+            gas_type, price, gallons, code = line.strip().split(', ')
+            inventory[gas_type] = {key_1: float(price), key_2: float(gallons), key_3: str(code)}
+        return inventory
