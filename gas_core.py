@@ -5,7 +5,6 @@ def price_of(inventory, gas_name):
     it will look in a txt file and pull out 
     the price of that gas and return it
     ''' 
-    new_dict = {}
     for item in inventory:
         if gas_name.strip() == item[0].strip().lower():
             return float(item[1])
@@ -57,9 +56,6 @@ def other_message(name, price, gallons):
     # For paying after
     """ str, float, float -> str """
     return 'Your total is ${:0.2f} of {} gas for {} gallons.'.format(gallons, name, price)
-
-
-
 def manager_inventory():
     ''' _> dict{dict{}}
     Fuction will load the prices as a dictionaries of 
@@ -67,9 +63,9 @@ def manager_inventory():
     '''
     inventory = {}
     with open('prices.txt', 'r') as file:
-        _, key_1, key_2 = file.readline().strip().split(', ')
+        _, key_1, key_2, key_3 = file.readline().strip().split(', ')
         lines = file.readlines()
         for line in lines:
-            gas_type, price, gallons = line.strip().split(', ')
-            inventory[gas_type] = {key_1: float(price), key_2: float(gallons)}
+            gas_type, price, gallons, code = line.strip().split(', ')
+            inventory[gas_type] = {key_1: float(price), key_2: float(gallons), key_3: str(code)}
         return inventory
