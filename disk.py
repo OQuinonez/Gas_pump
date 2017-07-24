@@ -15,9 +15,6 @@ def subtracting_tank(inventory, type_gas, gallons):
     return inventory with the differnce after 
     the gallons bought
     """
-    with open("prices.txt", 'r') as file:
-        file.readline()
-        items = file.readlines()
     updated_inventory = []
     for i in inventory:
         i[0] = str(i[0])
@@ -27,6 +24,7 @@ def subtracting_tank(inventory, type_gas, gallons):
             diff = i[2] - float(gallons)
         else:
             diff = i[2]
+
     message = type_gas + ', ' + str(gallons)
     with open('prices.txt', 'a') as f:
         updated_inventory.append([i[0], i[1], diff])
