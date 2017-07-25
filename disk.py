@@ -43,3 +43,12 @@ def manager_inventory():
             gas_type, price, gallons, code = line.strip().split(', ')
             inventory[gas_type] = {key_1: float(price), key_2: float(gallons), key_3: str(code)}
         return inventory
+
+
+def update_inventory(type_gas, gallons, price):
+    ''' str, float, float _> None
+    '''
+    msg = type_gas + ', ' + str(gallons) + ', ' + str(price) + '\n'
+    with open('gas.txt', 'a') as file:
+        file.write(msg)
+    return None
