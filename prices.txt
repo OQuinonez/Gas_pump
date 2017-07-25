@@ -1,4 +1,4 @@
-gas_type, price, gallons, code
-Regular, 2.07, 5000.0, 87
-Medium, 2.30, 5000.0, 89
-Premium, 2.35, 5000.0, 92
+gas_type, price, gallons
+Regular, 2.07, 5000.0
+Medium, 2.30, 5000.0
+Premium, 2.35, 5000.0
