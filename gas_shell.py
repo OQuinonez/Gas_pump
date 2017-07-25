@@ -1,9 +1,9 @@
 import time
-from disk import load_inventory, subtracting_tank
+from disk import load_inventory, subtracting_tank, update_inventory
 from gas_core import calc_money as dinero
 from gas_core import calc_gallon as gal
 from gas_core import price_of, final_message
-from gas_core import other_message, update_inventory
+from gas_core import other_message
 
 def gas_function():
     print("Hello, welcome to O's station.\n\nHere is the type of gas we have today.\n")
