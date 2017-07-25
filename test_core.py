@@ -15,4 +15,4 @@ def test_final_message():
 
 def test_other_message():
     actual = gas_core.final_message('regular', 2.05, 10)
-    return 'Your total is ${:0.2f} of {} gas for {} gallons.'.format(gallons, name, price)
+    # return 'Your total is ${:0.2f} of {} gas for {} gallons.'.format(gallons, name, price)
