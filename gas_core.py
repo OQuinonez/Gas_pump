@@ -1,4 +1,4 @@
-from disk import subtracting_tank, load_inventory
+from disk import load_inventory
 def price_of(inventory, gas_name):
     ''' ([[str, float, float]], str) _> (float)
     This function will get a string and 
@@ -8,9 +8,6 @@ def price_of(inventory, gas_name):
     for item in inventory:
         if gas_name.strip() == item[0].strip().lower():
             return float(item[1])
-
-
-
 def calc_gallon(money, price_gas):
     """ (float, float) _> float
     This funciton will get the amount of money
@@ -46,4 +43,5 @@ def final_message(name, price, gallons):
 def other_message(name, price, gallons):
     # For paying after
     """ str, float, float -> str """
-    return 'Your total is ${:0.2f} of {} gas for {} gallons.'.format(gallons, name, price)
+    return 'Your total is ${:0.2f} of {} gas for {} gallons.'.format(price, name, gallons)
+
